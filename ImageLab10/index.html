@@ -5,11 +5,21 @@
   </head>
   <body>
     <a-scene>
-      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-      <a-sky color="#ECECEC"></a-sky>
+    <a-assets>
+      <img id="sky" src="twirlpinksky.jpg">
+      <img id="cone" src="texture3.jpg">
+      <img id="ball" src="BeachBallTexture2.jpg">
+    </a-assets>
+      <a-sphere position="-2 2 -5" radius="1" src="#ball"></a-sphere>
+      <a-sphere position="1 1.25 -3" radius=".6" color="#FFB6C1"></a-sphere>
+      <a-cylinder position="1 .9 -3" radius=".73" height=".2" color="#FFB6C1"></a-cylinder>
+      <a-cone position="1 0.25 -3" color="#CDA26F" radius-bottom="0" radius-top=".5" src="#cone"></a-cone>      
+      <a-sky src="#sky"></a-sky>
     </a-scene>
   </body>
 </html>
+
+
+
+
+
