@@ -1,15 +1,56 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8" />
+    <title>Treasure Rush VR</title>
+    <meta name="description" content="A coin collecting VR world made with A-Frame" />
     <script src="https://aframe.io/releases/1.7.1/aframe.min.js"> </script>
+    <script>
+      let score = 0;
+      const totalCoins = 3;
+      AFRAME.registerComponent('collect-coin', {
+        init: function () {
+        this.el.addEventListener('click', () => {
+        if (!this.el.getAttribute('visible')) return;
+        this.el.setAttribute('visible', false);
+        score++;
+        const scoreText = document.querySelector('#scoreText');
+        scoreText.setAttribute('value', 'Score: ' + score);
+        if (score === totalCoins) {
+          const winText = document.querySelector('#winText');
+          winText.setAttribute('value', 'You found all the treasure!');
+        }
+      });
+    }
+  });
+</script>
   </head>
   <body>
     <a-scene>
-      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-      <a-sky color="#ECECEC"></a-sky>
+      <a-assets>
+        <img id="sky" src="ocean.jpeg">
+        <a-asset-item id="treeModel" src="Palm Tree.glb"></a-asset-item>
+        <a-asset-item id="chestModel" src="Chest with Gold.glb"></a-asset-item>
+        <a-asset-item id="rocksModel" src="Rocks.glb"></a-asset-item>
+      </a-assets>
+      <a-plane position="0 0 -5" rotation="-90 0 0" width="30" height="30" color="#FFFFF0"></a-plane>
+      <a-sky src="#sky"></a-sky>
+      <a-entity>
+        <a-camera>
+          <a-cursor fuse="true" fuse-timeout="1000"></a-cursor>  
+        </a-camera>
+      </a-entity>
+      <a-entity gltf-model="#treeModel" position="-6 0 -8" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#treeModel" position="-5 0 -8" scale=".75 .75 .75"></a-entity>
+      <a-entity gltf-model="#treeModel" position="5 0 -8" scale="1 1 1"></a-entity>
+      <a-entity gltf-model="#treeModel" position="5.25 0 -7" scale=".5 .5 .5"></a-entity>
+      <a-entity gltf-model="#chestModel" position="3 0 -6" rotation="0 -30 0" scale="1 1 1" ></a-entity>
+      <a-entity gltf-model="#rocksModel" position="-5.5 0 -7" scale="5 5 5"></a-entity>
+      <a-cylinder collect-coin class="coin" position="-1 1 -4" radius="0.4" height="0.1" color="gold" animation="property: rotation; to: 90 0 360; loop: true; dur: 2000"></a-cylinder>
+      <a-cylinder collect-coin class="coin" position="2 1.5 -5" radius="0.4" height="0.1" color="gold" animation="property: rotation; to: 90 0 360; loop: true; dur: 2000"></a-cylinder>
+      <a-cylinder collect-coin class="coin" position="-3 1.2 -7" radius="0.4" height="0.1" color="gold" animation="property: rotation; to: 90 0 360; loop: true; dur: 2000"></a-cylinder>
+      <a-text id="scoreText" value="Score: 0" position="-1 2 -4" color="FFFFF0" width="6"></a-text>
+      <a-text id="winText" value="" position ="-2 2.3 -4" color="yellow" width="8"></a-text>
     </a-scene>
   </body>
 </html>
