@@ -29,11 +29,13 @@
     <a-scene>
       <a-assets>
         <img id="sky" src="ocean.jpeg">
+        <img id="gold" src="gold.jpeg">
+        <img id="sand" src="sand.jpeg">
         <a-asset-item id="treeModel" src="Palm Tree.glb"></a-asset-item>
         <a-asset-item id="chestModel" src="Chest with Gold.glb"></a-asset-item>
         <a-asset-item id="rocksModel" src="Rocks.glb"></a-asset-item>
       </a-assets>
-      <a-plane position="0 0 -5" rotation="-90 0 0" width="30" height="30" color="#FFFFF0"></a-plane>
+      <a-plane position="0 0 -5" rotation="-90 0 0" width="30" height="30" color="#FFFFF0" src="#sand"></a-plane>
       <a-sky src="#sky"></a-sky>
       <a-entity>
         <a-camera>
@@ -46,9 +48,9 @@
       <a-entity gltf-model="#treeModel" position="5.25 0 -7" scale=".5 .5 .5"></a-entity>
       <a-entity gltf-model="#chestModel" position="3 0 -6" rotation="0 -30 0" scale="1 1 1" ></a-entity>
       <a-entity gltf-model="#rocksModel" position="-5.5 0 -7" scale="5 5 5"></a-entity>
-      <a-cylinder collect-coin class="coin" position="-1 1 -4" radius="0.4" height="0.1" color="gold" animation="property: rotation; to: 90 0 360; loop: true; dur: 2000"></a-cylinder>
-      <a-cylinder collect-coin class="coin" position="2 1.5 -5" radius="0.4" height="0.1" color="gold" animation="property: rotation; to: 90 0 360; loop: true; dur: 2000"></a-cylinder>
-      <a-cylinder collect-coin class="coin" position="-3 1.2 -7" radius="0.4" height="0.1" color="gold" animation="property: rotation; to: 90 0 360; loop: true; dur: 2000"></a-cylinder>
+      <a-cylinder collect-coin class="coin" position="-1 1 -4" radius="0.4" height="0.1" color="gold" animation="property: rotation; to: 90 0 360; loop: true; dur: 2000" src="#gold"></a-cylinder>
+      <a-cylinder collect-coin class="coin" position="2 1.5 -5" radius="0.4" height="0.1" color="gold" animation="property: rotation; to: 90 0 360; loop: true; dur: 2000" src="#gold"></a-cylinder>
+      <a-cylinder collect-coin class="coin" position="-3 1.2 -7" radius="0.4" height="0.1" color="gold" animation="property: rotation; to: 90 0 360; loop: true; dur: 2000" src="#gold"></a-cylinder>
       <a-text id="scoreText" value="Score: 0" position="-1 2 -4" color="FFFFF0" width="6"></a-text>
       <a-text id="winText" value="" position ="-2 2.3 -4" color="yellow" width="8"></a-text>
     </a-scene>
